@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Banner 320x180 do launcher da Android TV: fundo surface + marca e nome (PNG do wordmark). -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#121417" />
+        </shape>
+    </item>
+    <item android:drawable="@drawable/banner_mark" />
+</layer-list>

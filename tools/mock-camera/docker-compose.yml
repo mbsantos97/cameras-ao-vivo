@@ -1,0 +1,47 @@
+# Streams RTSP de teste para a câmera simulada (opcional; requer Docker).
+# Sobe o MediaMTX (RTSP na 8554) e três publicadores ffmpeg com testsrc:
+#   /onvif1  1280x720  (principal)     /onvif2  640x360 (sub)
+#   /stacked 1280x1440 (lente dupla empilhada)   /stacked_sub 640x720
+# Uso: docker compose -f tools/mock-camera/docker-compose.yml up
+#      ./gradlew :mock-camera:run --args="--variant dual-stacked --rtsp-host <IP do PC>"
+services:
+  mediamtx:
+    image: bluenviron/mediamtx:1.21.4
+    ports:
+      - "8554:8554"
+    environment:
+      MTX_PROTOCOLS: udp,tcp
+
+  main:
+    image: linuxserver/ffmpeg:9.0.2
+    depends_on: [mediamtx]
+    restart: unless-stopped
+    command: >
+      -re -f lavfi -i testsrc2=size=1280x720:rate=15
+      -c:v libx264 -preset ultrafast -tune zerolatency -g 30 -f rtsp rtsp://mediamtx:8554/onvif1
+
+  sub:
+    image: linuxserver/ffmpeg:9.0.2
+    depends_on: [mediamtx]
+    restart: unless-stopped
+    command: >
+      -re -f lavfi -i testsrc2=size=640x360:rate=15
+      -c:v libx264 -preset ultrafast -tune zerolatency -g 30 -f rtsp rtsp://mediamtx:8554/onvif2
+
+  stacked:
+    image: linuxserver/ffmpeg:9.0.2
+    depends_on: [mediamtx]
+    restart: unless-stopped
+    command: >
+      -re -f lavfi -i testsrc2=size=1280x720:rate=15 -f lavfi -i smptebars=size=1280x720:rate=15
+      -filter_complex vstack=inputs=2
+      -c:v libx264 -preset ultrafast -tune zerolatency -g 30 -f rtsp rtsp://mediamtx:8554/stacked
+
+  stacked_sub:
+    image: linuxserver/ffmpeg:9.0.2
+    depends_on: [mediamtx]
+    restart: unless-stopped
+    command: >
+      -re -f lavfi -i testsrc2=size=640x360:rate=15 -f lavfi -i smptebars=size=640x360:rate=15
+      -filter_complex vstack=inputs=2
+      -c:v libx264 -preset ultrafast -tune zerolatency -g 30 -f rtsp rtsp://mediamtx:8554/stacked_sub

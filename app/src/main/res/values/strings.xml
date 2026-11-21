@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Câmeras ao Vivo</string>
+    <string name="recording_channel">Gravação na TV Box</string>
+    <string name="recording_notification">Gravando câmeras na TV Box</string>
+</resources>

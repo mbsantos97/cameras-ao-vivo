@@ -1,0 +1,28 @@
+# Segredos e dados locais — nunca commitar
+cameras.local.json
+keystore.properties
+*.jks
+*.keystore
+local.properties
+
+# Build e IDE
+dist/
+build/
+.gradle/
+.idea/
+.kotlin/
+*.iml
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+*.hprof
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Mock camera
+tools/mock-camera/__pycache__/
+tools/mock-camera/*.pyc

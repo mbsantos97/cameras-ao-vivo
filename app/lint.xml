@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <!-- O app é só para TV, em paisagem: a orientação fixa é intencional. -->
+    <issue id="DiscouragedApi" severity="informational" />
+    <!-- Cleartext é necessário: ONVIF é HTTP na rede local (protegido pelo LanOnlyGuard). -->
+    <issue id="InsecureBaseConfiguration" severity="ignore" />
+    <!-- local.properties é gerado na máquina e fica fora do git. -->
+    <issue id="PropertyEscape">
+        <ignore path="**/local.properties" />
+    </issue>
+    <!-- O único bitmap é o wordmark do banner, desenhado para xhdpi (densidade das TV Boxes 1080p). -->
+    <issue id="IconMissingDensityFolder" severity="ignore" />
+    <!-- Sugestões de estilo KTX não afetam comportamento. -->
+    <issue id="UseKtx" severity="informational" />
+</lint>
