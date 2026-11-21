@@ -71,7 +71,7 @@ Precisa de JDK 17 e do Android SDK (plataforma 37.2, build-tools 37.0.0).
 ./gradlew :app:distApks            # copia os APKs para dist/
 ./gradlew ktlintCheck :app:lintDebug :app:testDebugUnitTest   # verificação
 ```
-Para assinar o release, crie um `keystore.properties` na raiz (veja o modelo em `keystore.properties.example`) ou use as variáveis de ambiente `KEYSTORE_FILE`/`KEYSTORE_PASSWORD`/`KEY_ALIAS`/`KEY_PASSWORD`. Sem isso, o release sai assinado com a chave de debug (só para testes).
+Para assinar o release, crie um `keystore.properties` na raiz (veja `keystore.properties.example`) ou use as variáveis de ambiente `KEYSTORE_FILE`/`KEYSTORE_PASSWORD`/`KEY_ALIAS`/`KEY_PASSWORD`. Sem isso, o release sai assinado com a chave de debug (só para testes).
 
 ## Privacidade e segurança
 - O app bloqueia qualquer conexão fora das faixas de rede local (um "guarda" no HTTP, no DNS e nos sockets).
