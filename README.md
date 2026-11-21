@@ -28,9 +28,9 @@
 - **Privado por padrão**: só conversa com endereços da rede local; sem Firebase, sem Play Services, sem analytics, sem rastreadores.
 
 ## Telas
-| Boas-vindas | Configurar pelo celular | Estados de conexão |
-|---|---|---|
-| ![](docs/screens/boas_vindas.png) | ![](docs/screens/configurar_celular.png) | ![](docs/screens/estados_conexao.png) |
+| Boas-vindas | Estados de conexão |
+|---|---|
+| ![](docs/screens/boas_vindas.png) | ![](docs/screens/estados_conexao.png) |
 
 ## Requisitos
 - **TV Box / TV com Android TV 7.0+** (testado na Xiaomi TV Box S 2ª geração; vale Mi Box S, Mi TV Stick e similares).
